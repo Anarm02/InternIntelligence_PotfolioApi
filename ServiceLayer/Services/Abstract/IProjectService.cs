@@ -10,7 +10,7 @@ namespace ServiceLayer.Services.Abstract
 {
 	public interface IProjectService
 	{
-		Task<IList<Project>> GetAllProjectsAsync();
+		Task<IList<ProjectDto>> GetAllProjectsAsync();
 		Task<Project> GetProjectAsync(Guid id);
 		Task DeleteProjectAsync(Guid id);
 		Task<Project> UpdateProjectAsync(ProjectUpdateDto dto);

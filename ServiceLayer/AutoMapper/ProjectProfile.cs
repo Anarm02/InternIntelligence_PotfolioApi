@@ -15,6 +15,7 @@ namespace ServiceLayer.AutoMapper
 		{
 			CreateMap<ProjectUpdateDto, Project>().ReverseMap();
 			CreateMap<ProjectAddDto, Project>().ReverseMap();
+			CreateMap<Project,ProjectDto>().ReverseMap();
 		}
 	}
 }

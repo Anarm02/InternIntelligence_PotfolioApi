@@ -46,9 +46,25 @@ namespace ServiceLayer.Services.Concrete
 			await unitOfWork.SaveAsync();
 		}
 
-		public async Task<IList<Project>> GetAllProjectsAsync()
+		public async Task<IList<ProjectDto>> GetAllProjectsAsync()
 		{
-			return await unitOfWork.GetRepository<Project>().GetAllAsync(x => !x.IsDeleted);
+			var projects= await unitOfWork.GetRepository<Project>().GetAllAsync(x => !x.IsDeleted,x=>x.ProjectImage);
+			List<ProjectDto> projectDtos = new List<ProjectDto>();
+			foreach (var project in projects)
+			{
+				if(project is not null)
+				{
+					projectDtos.Add(new()
+					{
+						Description = project.Description,
+						Title = project.Title,
+						Id=project.Id,
+						ImagePath = project.ProjectImage?.FilePath ?? string.Empty,
+						ProjectUrl = project.ProjectUrl
+					});
+				}
+			}
+			return projectDtos;
 		}
 
 		public async Task<Project> GetProjectAsync(Guid id)

@@ -18,6 +18,7 @@ namespace ServiceLayer.Extensions
 		{
 			services.AddScoped<IProjectService, ProjectService>();
 			services.AddScoped<ISkillService, SkillService>();
+			services.AddScoped<IImageService, ImageService>();
 			var assembly=Assembly.GetExecutingAssembly();
 			services.AddAutoMapper(assembly);
 			services.AddValidatorsFromAssemblyContaining<ProjectValidator>();

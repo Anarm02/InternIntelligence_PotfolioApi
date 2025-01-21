@@ -5,6 +5,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Abstract;
+using ServiceLayer.Services.Concrete;
 
 
 namespace WebAPI.Controllers
@@ -14,10 +15,16 @@ namespace WebAPI.Controllers
 	public class ProjectsController : ControllerBase
 	{
 		private readonly IProjectService projectService;
+		private readonly IWebHostEnvironment _environment;
+		private readonly IImageService _imageService;
 
-		public ProjectsController(IProjectService projectService)
+
+
+		public ProjectsController(IProjectService projectService, IWebHostEnvironment environment, IImageService imageService)
 		{
 			this.projectService = projectService;
+			_environment = environment;
+			_imageService = imageService;
 		}
 		[HttpPost("[action]")]
 		public async Task<IActionResult> AddProject(ProjectAddDto projectAddDto)
@@ -65,6 +72,29 @@ namespace WebAPI.Controllers
 			var project=await projectService.UpdateProjectAsync(projectUpdateDto);
 			return Ok(project);
 		}
+		[HttpPost("{projectId}/[action]")]
+		public async Task<IActionResult> UploadFile(Guid projectId, IFormFile formFile)
+		{
+			if (formFile == null || formFile.Length == 0)
+				return BadRequest("File is empty");
+
+			
+			string relativeUploadPath = Path.Combine("Uploads", "ProjectImages");
+			string uploadPath = Path.Combine(_environment.WebRootPath, relativeUploadPath);
+
+			if (!Directory.Exists(uploadPath))
+			{
+				Directory.CreateDirectory(uploadPath);
+			}
+
+			bool isUploaded = await _imageService.UploadProjectImage(projectId, formFile, uploadPath, relativeUploadPath);
+
+			if (!isUploaded)
+				return BadRequest("Something went wrong.");
+
+			return Ok("Image successfully uploaded.");
+		}
+
 
 	}
 }
