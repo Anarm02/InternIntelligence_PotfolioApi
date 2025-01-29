@@ -4,6 +4,7 @@ using DataAccessLayer.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250129172844_AddAdmin")]
+    partial class AddAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,8 +56,8 @@ namespace DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("87324275-992e-432d-a4aa-2b385af6de9b"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(2204),
+                            Id = new Guid("b1eb353a-c19e-4377-8f97-d8182a2349f2"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 579, DateTimeKind.Utc).AddTicks(5781),
                             DateAchieved = new DateTime(2024, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Awarded for outstanding performance and dedication to the company.",
                             IsDeleted = false,
@@ -62,8 +65,8 @@ namespace DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c88950fa-04a4-436e-932b-d94c878b2e4c"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(2210),
+                            Id = new Guid("b05e53dd-909c-4c36-8d59-1253e28c6c30"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 579, DateTimeKind.Utc).AddTicks(5787),
                             DateAchieved = new DateTime(2023, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Successfully completed the C# certification exam with high distinction.",
                             IsDeleted = false,
@@ -179,17 +182,17 @@ namespace DataAccessLayer.Migrations
                         {
                             Id = new Guid("60f812e7-9374-4623-873b-c28d9f6437e4"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7659f9e-eb2b-4c1f-886b-8865a206d51d",
+                            ConcurrencyStamp = "f3a3520f-eb68-41e9-801a-61e61cb60b66",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FullName = "Anar Mammadli",
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFX2ViRRR/3iqLai2OBNwZ0ey2dJgcyuOSvfCOBD0oUve95is3XMECEOKxe3m9ln2w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI0kKR911EbRESYVt+4pPCRSK9qE9AhP3wjWEq6ZhamJloXcuSjcEiGTNr4FJ7yiZg==",
                             PhoneNumber = "+9940506983552",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "e5072109-f8bd-4bdf-93fd-0edfa7f7d55d",
+                            SecurityStamp = "16297386-886d-47cf-acbc-fa56bd79b277",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         });
@@ -230,8 +233,8 @@ namespace DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c1e8d8b6-7b78-4c80-a4cf-00f5587ca261"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(5701),
+                            Id = new Guid("a64317f2-c364-496e-82cc-f66d49b44ae0"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 579, DateTimeKind.Utc).AddTicks(9177),
                             Description = "A fully responsive e-commerce platform with payment integration and user authentication.",
                             IsDeleted = false,
                             ProjectUrl = "https://www.myecommerceproject.com",
@@ -239,8 +242,8 @@ namespace DataAccessLayer.Migrations
                         },
                         new
                         {
-                            Id = new Guid("edb93356-d6ed-4f5a-aece-6594c98db547"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(5704),
+                            Id = new Guid("5e5c73ab-7f40-41fe-9c50-61dc788374b8"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 579, DateTimeKind.Utc).AddTicks(9181),
                             Description = "A web-based task management application to help teams collaborate effectively.",
                             IsDeleted = false,
                             ProjectUrl = "https://www.taskmanagerapp.com",
@@ -304,16 +307,16 @@ namespace DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("15bfe2bd-63f5-4320-9724-eae45651163c"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(7882),
+                            Id = new Guid("30dcb638-5e1e-4ede-b6cb-c0fe92eaf22a"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 580, DateTimeKind.Utc).AddTicks(3285),
                             IsDeleted = false,
                             Name = "C# Programming",
                             ProfiencyLevel = "Advanced"
                         },
                         new
                         {
-                            Id = new Guid("d6d6e60f-9dfb-4d9f-acfd-fb2039cac0f4"),
-                            CreatedAt = new DateTime(2025, 1, 29, 17, 39, 45, 879, DateTimeKind.Utc).AddTicks(7899),
+                            Id = new Guid("e780455e-15e1-4400-b806-219704fa8904"),
+                            CreatedAt = new DateTime(2025, 1, 29, 17, 28, 43, 580, DateTimeKind.Utc).AddTicks(3291),
                             IsDeleted = false,
                             Name = "Web Development",
                             ProfiencyLevel = "Intermediate"

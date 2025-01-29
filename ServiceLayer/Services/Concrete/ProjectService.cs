@@ -43,6 +43,7 @@ namespace ServiceLayer.Services.Concrete
 		{
 			var project = await unitOfWork.GetRepository<Project>().GetByGuidAsync(id);
 			project.IsDeleted = true;
+			await unitOfWork.GetRepository<Project>().UpdateAsync(project);
 			await unitOfWork.SaveAsync();
 		}
 
@@ -78,6 +79,7 @@ namespace ServiceLayer.Services.Concrete
 			project.ProjectUrl = dto.ProjectUrl;
 			project.Title = dto.Title;
 			project.Description = dto.Description;
+			await unitOfWork.GetRepository<Project>().UpdateAsync(project);
 			await unitOfWork.SaveAsync();
 			return project;
 		}

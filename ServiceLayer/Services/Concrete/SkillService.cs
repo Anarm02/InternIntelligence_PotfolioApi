@@ -53,6 +53,7 @@ namespace ServiceLayer.Services.Concrete
 		{
 			var skill=await _unitOfWork.GetRepository<Skill>().GetByGuidAsync(id);
 			skill.IsDeleted = true;
+			await _unitOfWork.GetRepository<Skill>().UpdateAsync(skill);
 			await _unitOfWork.SaveAsync();
 		}
 
@@ -61,6 +62,7 @@ namespace ServiceLayer.Services.Concrete
 			var skillToUpdate = await _unitOfWork.GetRepository<Skill>().GetByGuidAsync(skill.Id);
 			skillToUpdate.ProfiencyLevel = skill.ProfiencyLevel;
 			skillToUpdate.Name = skill.Name;
+			await _unitOfWork.GetRepository<Skill>().UpdateAsync(skillToUpdate);
 			await _unitOfWork.SaveAsync();
 			return skillToUpdate;
 		}

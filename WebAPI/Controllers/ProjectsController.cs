@@ -2,6 +2,7 @@
 using EntityLayer.DTOs.Projects;
 using EntityLayer.Entities;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Abstract;
@@ -10,8 +11,10 @@ using ServiceLayer.Services.Concrete;
 
 namespace WebAPI.Controllers
 {
+
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize]
 	public class ProjectsController : ControllerBase
 	{
 		private readonly IProjectService projectService;
