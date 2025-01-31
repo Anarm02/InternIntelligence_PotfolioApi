@@ -54,6 +54,7 @@ namespace WebAPI.Controllers
 			return BadRequest("Invalid id");
 		}
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> GetAllProjects()
 		{
 			var projects = await projectService.GetAllProjectsAsync();

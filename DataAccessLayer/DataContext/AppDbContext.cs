@@ -20,6 +20,7 @@ namespace DataAccessLayer.DataContext
 		public DbSet<Skill> Skills { get; set; }
 		public DbSet<Achievement> Achievements { get; set; }
 		public DbSet<ProjectImage> ProjectImages { get; set; }
+		public DbSet<ContactMessage> ContactMessages { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);

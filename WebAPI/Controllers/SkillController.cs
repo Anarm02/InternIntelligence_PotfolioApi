@@ -1,5 +1,6 @@
 ﻿using EntityLayer.DTOs.Skills;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Abstract;
@@ -8,6 +9,7 @@ namespace WebAPI.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
+	[Authorize]
 	public class SkillController : ControllerBase
 	{
 		private readonly ISkillService skillService;
@@ -17,6 +19,7 @@ namespace WebAPI.Controllers
 			this.skillService = skillService;
 		}
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> GetAllSkills()
 		{
 			var skills = await skillService.GetSkillListAsync();

@@ -1,12 +1,15 @@
 ﻿using EntityLayer.DTOs.AchievementDto;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Services.Abstract;
 
 namespace WebAPI.Controllers
 {
+	
 	[Route("api/[controller]")]
+	[Authorize]
 	[ApiController]
 	public class AchievementController : ControllerBase
 	{
@@ -17,6 +20,7 @@ namespace WebAPI.Controllers
 			_achievementService = achievementService;
 		}
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> GetAll()
 		{
 			var achievements = await _achievementService.GetAllAsync();

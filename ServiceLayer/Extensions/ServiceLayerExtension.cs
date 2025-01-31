@@ -27,6 +27,7 @@ namespace ServiceLayer.Extensions
 			services.AddScoped<IAchievementService, AchievementService>();
 			services.AddScoped<ITokenService, TokenService>();	
 			services.AddScoped<IAuthService, AuthService>();	
+			services.AddScoped<IContactMessageService, ContactMessageService>();
 			var assembly=Assembly.GetExecutingAssembly();
 			services.AddAutoMapper(assembly);
 			services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
